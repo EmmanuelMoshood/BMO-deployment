@@ -62,19 +62,19 @@ resource "aws_route_table" "public_route_table" {
   }
 }
 
-# associate public subnet pub-sub-1a to public route table
+# associate public subnet in az2 pub-sub-1a to public route table
 resource "aws_route_table_association" "pub-sub-1a_route_table_association" {
   subnet_id           = aws_subnet.pub_sub_1a.id
   route_table_id      = aws_route_table.public_route_table.id
 }
 
-# associate public subnet az2 to "public route table"
+# associate public subnet in az2 to "public route table"
 resource "aws_route_table_association" "pub-sub-2-b_route_table_association" {
   subnet_id           = aws_subnet.pub_sub_2b.id
   route_table_id      = aws_route_table.public_route_table.id
 }
 
-# create private app subnet pri-sub-3a
+# create private app subnet1 pri-sub-3a
 resource "aws_subnet" "pri_sub_3a" {
   vpc_id                   = aws_vpc.vpc.id
   cidr_block               = var.pri_sub_3a_cidr
@@ -86,7 +86,7 @@ resource "aws_subnet" "pri_sub_3a" {
   }
 }
 
-# create private app pri-sub-4b
+# create private app subnet2 pri-sub-4b
 resource "aws_subnet" "pri_sub_4b" {
   vpc_id                   = aws_vpc.vpc.id
   cidr_block               = var.pri_sub_4b_cidr
@@ -98,7 +98,7 @@ resource "aws_subnet" "pri_sub_4b" {
   }
 }
 
-# create private data subnet pri-sub-5a
+# create private data subnet 1 pri-sub-5a
 resource "aws_subnet" "pri_sub_5a" {
   vpc_id                   = aws_vpc.vpc.id
   cidr_block               = var.pri_sub_5a_cidr
@@ -110,7 +110,7 @@ resource "aws_subnet" "pri_sub_5a" {
   }
 }
 
-# create private data subnet pri-sub-6-b
+# create private data subnet 2 pri-sub-6-b
 resource "aws_subnet" "pri_sub_6b" {
   vpc_id                   = aws_vpc.vpc.id
   cidr_block               = var.pri_sub_6b_cidr

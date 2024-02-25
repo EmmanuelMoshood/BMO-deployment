@@ -2,11 +2,8 @@ resource "aws_lb" "backend_lb" {
   name               = "backend-lb"
   internal           = true
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.lbsecuritygroupB.id]
-
-  subnets = [
-    aws_subnet.cloudforce_privateA.id,
-    aws_subnet.cloudforce_privateB.id
+  security_groups    = [var.app_sg_id]
+  subnets            = [var.pub_sub_1a_id,var.pub_sub_2b_id]
   ]
 }
 
@@ -14,7 +11,7 @@ resource "aws_lb_target_group" "backendTG" {
   name     = "backendTG"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = aws_vpc.cloudforce_vpc.id
+  vpc_id      = var.vpc_id
 
   health_check {
     enabled             = true

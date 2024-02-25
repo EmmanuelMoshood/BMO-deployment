@@ -6,8 +6,8 @@ resource "aws_autoscaling_group" "frontendASG" {
   health_check_type = "EC2"
 
   vpc_zone_identifier = [
-    aws_subnet.cloudforce_publicA.id,
-    aws_subnet.cloudforce_publicB.id
+    aws_subnet.pub_sub_1a.id,
+    aws_subnet.pub_sub_2b.id
   ]
 
   target_group_arns = [aws_lb_target_group.frontendTG.arn]

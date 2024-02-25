@@ -1,20 +1,17 @@
 resource "aws_lb" "frontend_lb" {
-  name               = "frontend-lb"
+  name               = "${var.project_name}-frontend-lb"
   internal           = false
   load_balancer_type = "application"
-  security_groups    = [aws_security_group.lbsecuritygroupB.id]
+  security_groups    = [var.web_sg_id]
+  subnets            = [var.pub_sub_1a_id,var.pub_sub_2b_id]
 
-  subnets = [
-    aws_subnet.cloudforce_publicA.id,
-    aws_subnet.cloudforce_publicB.id
-  ]
 }
 
 resource "aws_lb_target_group" "frontendTG" {
   name     = "frontendTG"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = aws_vpc.cloudforce_vpc.id
+  vpc_id      = var.vpc_id
 
   health_check {
     enabled             = true
