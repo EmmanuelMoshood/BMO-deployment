@@ -58,3 +58,5 @@ Access Control: IAM roles and policies are used to grant appropriate permissions
   - store state files on remote location
 
 
+Remote Backend
+![s3-backend](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/61415695-72ca-45ac-b51c-c9411758b9e1)
