@@ -44,4 +44,17 @@ To ensure the security of the architecture, the following measures are implement
 Network Security: Security groups are configured to restrict traffic, allowing only necessary communication between the tiers.
 Access Control: IAM roles and policies are used to grant appropriate permissions to EC2 instances and services.
 
+## Implementation Steps: 
+### Prerequisite installations on my local machine
+- VS Code
+- AWS CLI
+- Terraform install
+
+### IAM user
+- Following the Principle of least privilege I created a user on my AWS account which was used to configure my profile for Terraform to work with.
+
+### Write Terraform files
+- Then I began to write the infrastructure using best practices while writing code. Here are some:
+  - store state files on remote location
+
 
