@@ -62,3 +62,8 @@ Access Control: IAM roles and policies are used to grant appropriate permissions
 
 Remote Backend
 ![s3-backend](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/61415695-72ca-45ac-b51c-c9411758b9e1)
+
+
+State locking with DynamoDB
+![dynamo-statelocking](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/f9bf2a9b-97b4-4107-8973-99408fa9be8f)
+
