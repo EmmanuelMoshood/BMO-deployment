@@ -39,3 +39,9 @@ The database stores and manages the application's data.
 - Amazon S3 (storing backend and achieving versioning)
 - Amazon CloudWatch (Alarm when CPU utilization increase or decreases)
 
+## Scalability and High Availability
+To ensure the security of the architecture, the following measures are implemented:
+Network Security: Security groups are configured to restrict traffic, allowing only necessary communication between the tiers.
+Access Control: IAM roles and policies are used to grant appropriate permissions to EC2 instances and services.
+
+
