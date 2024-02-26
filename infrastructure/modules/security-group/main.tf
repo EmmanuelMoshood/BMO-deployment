@@ -1,4 +1,4 @@
-resource "aws_security_group" "alb_sg" {
+resource "aws_security_group" "web_sg" {
   name        = "alb security group"
   description = "enable http/https access on port 80/443"
   vpc_id      = var.vpc_id
@@ -27,22 +27,22 @@ resource "aws_security_group" "alb_sg" {
   }
 
   tags = {
-    Name = "alb_sg"
+    Name = "web_sg"
   }
 }
 
-# create security group for the Client
-resource "aws_security_group" "client_sg" {
-  name        = "client_sg"
-  description = "enable http/https access on port 80 for elb sg"
+# create security group for the application server
+resource "aws_security_group" "app_sg" {
+  name        = "app_sg"
+  description = "enable http/https access on port 80 for the application sg"
   vpc_id      = var.vpc_id
 
   ingress {
-    description     = "http access"
-    from_port       = 80
-    to_port         = 80
+    description     = "access backend"
+    from_port       = 3000
+    to_port         = 3000
     protocol        = "tcp"
-    security_groups = [aws_security_group.alb_sg.id]
+    security_groups = [aws_security_group.web_sg.id]
   }
 
   egress {
@@ -53,7 +53,7 @@ resource "aws_security_group" "client_sg" {
   }
 
   tags = {
-    Name = "Client_sg"
+    Name = "app_sg"
   }
 }
 
@@ -68,7 +68,7 @@ resource "aws_security_group" "db_sg" {
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
-    security_groups = [aws_security_group.client_sg.id]
+    security_groups = [aws_security_group.app_sg.id]
   }
 
   egress {
