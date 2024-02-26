@@ -10,9 +10,5 @@ add-apt-repository \
 apt-get update
 apt-get install -y docker-ce
 usermod -aG docker ubuntu
-sudo docker pull marcrine/bookappbackend
-<<<<<<< HEAD
-sudo docker run -d -p 5000:5000 marcrine/bookappbackend
-=======
-
->>>>>>> refs/remotes/origin/main
+sudo docker pull marcrine/bookappfrontend
+sudo docker run -d -p 80:3000 marcrine/bookappfrontend

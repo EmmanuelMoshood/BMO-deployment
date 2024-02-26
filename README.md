@@ -5,7 +5,7 @@ As a member of the DevOps Engineering team, I have designed and implemented the 
 The infrastructure will be based on a 3-tier application architecture consisting of web, application, and database tiers. Modern Infrastructure as Code (IaC) technique has been utilized for deployment using Terraform and container technology to deploy the frontend and backend applications have been used. In addition, the deployment is created to be scalable and highly available in multiple availability zones. Seen the architectural diagram for reference. 
 
 ## Reference Architecture
-![reference architecture](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/2d960dcf-39b2-42dd-b1dc-cffa382ce5fe)
+![reference architecture](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/9f122f13-ccc4-409e-99f4-b547c17b74e1)
 
 
 
