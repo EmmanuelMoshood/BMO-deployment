@@ -3,7 +3,7 @@ resource "aws_launch_template" "lt_name" {
   image_id      = var.ami
   instance_type = var.cpu
   key_name      = var.key_name
-  user_data     = filebase64("../modules/asg/config.sh")
+  user_data     = var.user_data
 
 
   vpc_security_group_ids = [var.client_sg_id]
@@ -20,7 +20,7 @@ resource "aws_autoscaling_group" "asg_name" {
   desired_capacity          = var.desired_cap
   health_check_grace_period = 300
   health_check_type         = var.asg_health_check_type #"ELB" or default EC2
-  vpc_zone_identifier = [var.pri_sub_3a_id,var.pri_sub_4b_id]
+  vpc_zone_identifier = [var.subsetA_id,var.subsetB_id]
   target_group_arns   = [var.tg_arn] #var.target_group_arns
 
   enabled_metrics = [

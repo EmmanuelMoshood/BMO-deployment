@@ -6,6 +6,7 @@ variable "cpu" {
     default = "t2.micro"
 }
 variable "key_name" {}
+variable "user_data" {}
 variable "client_sg_id" {}
 variable "max_size" {
     default = 6
@@ -19,6 +20,6 @@ variable "desired_cap" {
 variable "asg_health_check_type" {
     default = "ELB"
 }
-variable "pri_sub_3a_id" {}
-variable "pri_sub_4b_id" {}
+variable "subsetA_id" {}
+variable "subsetB_id" {}
 variable "tg_arn" {}

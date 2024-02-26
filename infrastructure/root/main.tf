@@ -34,46 +34,36 @@ module "key" {
   source = "../modules/key"
 }
 
-# Creating Application Load balancer for the frontend servers
-module "alb-frontend" {
+# Creating Application Load balancer
+module "alb" {
   source         = "../modules/alb"
   project_name   = module.vpc.project_name
-  web_sg_id      = module.security-group.web_sg_id
+  alb_sg_id      = module.security-group.alb_sg_id
   pub_sub_1a_id = module.vpc.pub_sub_1a_id
   pub_sub_2b_id = module.vpc.pub_sub_2b_id
   vpc_id         = module.vpc.vpc_id
 }
 
-# Creating Application Load balancer for the backend servers
-module "alb-backend" {
-  source         = "../modules/alb"
-  project_name   = module.vpc.project_name
-  app_sg_id      = module.security-group.app_sg_id
-  pub_sub_1a_id = module.vpc.pub_sub_1a_id
-  pub_sub_2b_id = module.vpc.pub_sub_2b_id
-  vpc_id         = module.vpc.vpc_id
-}
+# module "asg"  {
+#   source         = "../modules/asg"
+#   project_name   = module.vpc.project_name
+#   key_name       = module.key.key_name
+#   client_sg_id   = module.security-group.client_sg_id
+#   subsetA_id = module.vpc.pri_sub_1a_id
+#   subsetB_id = module.vpc.pri_sub_2b_id
+#   tg_arn         = module.alb.tg_arn
+#   user_data = var.user_data_frontend
+# }
 
-module "asg-frontend" {
+module "asg" {
   source         = "../modules/asg"
   project_name   = module.vpc.project_name
   key_name       = module.key.key_name
-  web_sg_id   = module.security-group.web_sg_id
-  pri_sub_3a_id = module.vpc.pri_sub_3a_id
-  pri_sub_4b_id = module.vpc.pri_sub_4b_id
+  client_sg_id   = module.security-group.client_sg_id
+  subsetA_id = module.vpc.pri_sub_3a_id
+  subsetB_id = module.vpc.pri_sub_4b_id
   tg_arn         = module.alb.tg_arn
-
-}
-
-module "asg-backend" {
-  source         = "../modules/asg"
-  project_name   = module.vpc.project_name
-  key_name       = module.key.key_name
-  app_sg_id   = module.security-group.app_sg_id
-  pri_sub_3a_id = module.vpc.pri_sub_3a_id
-  pri_sub_4b_id = module.vpc.pri_sub_4b_id
-  tg_arn         = module.alb.tg_arn
-
+  user_data = filebase64("../modules/asg/backenddata.sh")
 }
 
 # creating RDS instance
@@ -84,25 +74,24 @@ module "rds" {
   pri_sub_5a_id = module.vpc.pri_sub_5a_id
   pri_sub_6b_id = module.vpc.pri_sub_6b_id
   db_username    = var.db_username
-  db_password    = var.db_password
 }
 
 
-# create cloudfront distribution 
-module "cloudfront" {
-  source = "../modules/cloudfront"
-  certificate_domain_name = var.certificate_domain_name
-  alb_domain_name = module.alb.alb_dns_name
-  additional_domain_name = var.additional_domain_name
-  project_name = module.vpc.project_name
-}
+# # create cloudfront distribution 
+# module "cloudfront" {
+#   source = "../modules/cloudfront"
+#   certificate_domain_name = var.certificate_domain_name
+#   alb_domain_name = module.alb.alb_dns_name
+#   additional_domain_name = var.additional_domain_name
+#   project_name = module.vpc.project_name
+# }
 
 
-# Add record in route 53 hosted zone
+# # Add record in route 53 hosted zone
 
-module "route53" {
-  source = "../modules/route53"
-  cloudfront_domain_name = module.cloudfront.cloudfront_domain_name
-  cloudfront_hosted_zone_id = module.cloudfront.cloudfront_hosted_zone_id
+# module "route53" {
+#   source = "../modules/route53"
+#   cloudfront_domain_name = module.cloudfront.cloudfront_domain_name
+#   cloudfront_hosted_zone_id = module.cloudfront.cloudfront_hosted_zone_id
 
-}
+# }
