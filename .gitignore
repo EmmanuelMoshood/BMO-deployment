@@ -7,6 +7,7 @@
 .terraform.lock.hcl
 .terraform
 .infracost
+./infrastructure/root/.terraform/*
 
 # Crash log files
 crash.log
