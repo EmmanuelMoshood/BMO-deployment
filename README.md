@@ -5,7 +5,8 @@ As a member of the DevOps Engineering team, I have designed and implemented the 
 The infrastructure will be based on a 3-tier application architecture consisting of web, application, and database tiers. Modern Infrastructure as Code (IaC) technique has been utilized for deployment using Terraform and container technology to deploy the frontend and backend applications have been used. In addition, the deployment is created to be scalable and highly available in multiple availability zones. Seen the architectural diagram for reference. 
 
 ## Reference Architecture
-![reference architecture](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/f5c6b1ca-27c0-413a-99e0-7a632ee4bbd8)
+![reference architecture](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/2d960dcf-39b2-42dd-b1dc-cffa382ce5fe)
+
 
 
 ## Infrastructure Setup
@@ -57,7 +58,8 @@ Access Control: IAM roles and policies are used to grant appropriate permissions
 - Then I began to write the infrastructure using best practices while writing code. Here are some:
   - store state files on remote location
   - using state-locking to keep tfstate file consistent while working on a collaborative project using DynamoDB
-  - 
+  - using Terraform modules to encapsulate and abstract complex infrastructure components.
+  - using terraform validate and terraform fmt commands to validate and format your Terraform code.
 
 
 Remote Backend
@@ -66,4 +68,16 @@ Remote Backend
 
 State locking with DynamoDB
 ![dynamo-statelocking](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/f9bf2a9b-97b4-4107-8973-99408fa9be8f)
+
+
+## Outputs
+
+test WooCommerce app
+![04-wordpress-ready](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/7b8e0172-003e-460f-93a5-2a74359cfb9d)
+
+vpc and subnets 
+![created-subnets](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/0a57b515-9b33-45c9-9fa6-9a4a2372e56e)
+
+
+
 
