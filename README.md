@@ -78,6 +78,35 @@ test WooCommerce app
 vpc and subnets 
 ![created-subnets](https://github.com/EmmanuelMoshood/BMO-deployment/assets/100259567/0a57b515-9b33-45c9-9fa6-9a4a2372e56e)
 
+Routing table
+![route_table](https://github.com/EmmanuelMoshood/mosh-devops-notes/assets/100259567/e126d59c-afcc-459d-bd6b-58e5ad261774)
+
+NAT-gateway
+![launched-nat-gatewway](https://github.com/EmmanuelMoshood/mosh-devops-notes/assets/100259567/0a1cbd39-7d2c-4804-b21f-cb5f52cd12f3)
 
 
+Internet-gateway
+![created-igw](https://github.com/EmmanuelMoshood/mosh-devops-notes/assets/100259567/ec73f183-799c-420b-830e-f68869159b5e)
+
+security groups
+![launched-security-group](https://github.com/EmmanuelMoshood/mosh-devops-notes/assets/100259567/26c7a36a-d005-4918-9558-b029262abdd2)
+
+launch template
+![launch-templates](https://github.com/EmmanuelMoshood/mosh-devops-notes/assets/100259567/dc590151-17af-48ed-b76c-59ea9ea81492)
+
+
+auto-scaling group
+![autoscaling-group](https://github.com/EmmanuelMoshood/mosh-devops-notes/assets/100259567/42245287-e6aa-4d5d-987a-d87a0a79047c)
+
+
+EC2 servers 
+![launched-ec2-servers](https://github.com/EmmanuelMoshood/mosh-devops-notes/assets/100259567/a93923fd-dd47-4c91-9b02-9a75fe2631fc)
+
+
+Target group
+![target-groups](https://github.com/EmmanuelMoshood/mosh-devops-notes/assets/100259567/de370da4-341c-486f-9e7e-6956cd040a9a)
+
+
+Application load balancer
+![load-balancer](https://github.com/EmmanuelMoshood/mosh-devops-notes/assets/100259567/57a7e1e2-7f3e-4ced-a2b2-32f1df84e880)
 
