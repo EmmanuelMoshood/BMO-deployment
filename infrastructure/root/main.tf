@@ -44,16 +44,16 @@ module "alb" {
   vpc_id         = module.vpc.vpc_id
 }
 
-# module "asg"  {
-#   source         = "../modules/asg"
-#   project_name   = module.vpc.project_name
-#   key_name       = module.key.key_name
-#   client_sg_id   = module.security-group.client_sg_id
-#   subsetA_id = module.vpc.pri_sub_1a_id
-#   subsetB_id = module.vpc.pri_sub_2b_id
-#   tg_arn         = module.alb.tg_arn
-#   user_data = var.user_data_frontend
-# }
+ module "asg"  {
+   source         = "../modules/asg"
+   project_name   = module.vpc.project_name
+   key_name       = module.key.key_name
+   client_sg_id   = module.security-group.client_sg_id
+   subsetA_id = module.vpc.pri_sub_1a_id
+   subsetB_id = module.vpc.pri_sub_2b_id
+   tg_arn         = module.alb.tg_arn
+   user_data = var.user_data_frontend
+ }
 
 module "asg" {
   source         = "../modules/asg"
@@ -77,21 +77,21 @@ module "rds" {
 }
 
 
-# # create cloudfront distribution 
-# module "cloudfront" {
-#   source = "../modules/cloudfront"
-#   certificate_domain_name = var.certificate_domain_name
-#   alb_domain_name = module.alb.alb_dns_name
-#   additional_domain_name = var.additional_domain_name
-#   project_name = module.vpc.project_name
-# }
+ # create cloudfront distribution 
+ module "cloudfront" {
+   source = "../modules/cloudfront"
+   certificate_domain_name = var.certificate_domain_name
+   alb_domain_name = module.alb.alb_dns_name
+   additional_domain_name = var.additional_domain_name
+   project_name = module.vpc.project_name
+ }
 
 
-# # Add record in route 53 hosted zone
+ # Add record in route 53 hosted zone
 
-# module "route53" {
-#   source = "../modules/route53"
-#   cloudfront_domain_name = module.cloudfront.cloudfront_domain_name
-#   cloudfront_hosted_zone_id = module.cloudfront.cloudfront_hosted_zone_id
+ module "route53" {
+   source = "../modules/route53"
+   cloudfront_domain_name = module.cloudfront.cloudfront_domain_name
+   cloudfront_hosted_zone_id = module.cloudfront.cloudfront_hosted_zone_id
 
-# }
+ }
